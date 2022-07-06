@@ -1,5 +1,5 @@
-import {PostDAO} from "../interface/postDAO";
-import {Post} from "../../../model/Post";
+import {PlanetDAO} from "../interface/PlanetDAO";
+import {Planet} from "../../../model/Planet";
 
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
@@ -11,12 +11,12 @@ import {Injectable} from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-export class PostDAOArray implements PostDAO {
+export class PlanetDAOImpl implements PlanetDAO {
 
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<Post[]> {
+  getAll(): Observable<Planet[]> {
     return this.http.get(`${environment.swapiUrl}/planets`)
       .pipe(map((data: any) => {
         let planetList = data['results']
@@ -24,10 +24,14 @@ export class PostDAOArray implements PostDAO {
       }))
   }
 
-  getById(id: number): Observable<Post> {
-    return this.http.get<Post>(`${environment.swapiUrl}/planets/${id}`)
+  findByName(name: string) {
+
+  }
+
+  getById(id: number): Observable<Planet> {
+    return this.http.get<Planet>(`${environment.swapiUrl}/planets/${id}`)
       .pipe(
-        map((post: Post) => {
+        map((post: Planet) => {
           console.log(post)
           return {
             ...post
@@ -36,20 +40,20 @@ export class PostDAOArray implements PostDAO {
       )
   }
 
-  // add(T): <Post>{
+  // add(T): <Planet>{
   //   return undefined;
   // }
   //
-  // delete(id: number): <Post>{
+  // delete(id: number): <Planet>{
   //   return undefined;
   // }
 
-//   getAll(): <Post[]> {
+//   getAll(): <Planet[]> {
 //
 // }
 
 
-// update(T): <Post>{
+// update(T): <Planet>{
 //   return undefined;
 // }
 

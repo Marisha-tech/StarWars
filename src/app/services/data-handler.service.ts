@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {PostDAOArray} from "../data/dao/impl/postDAOArray";
+import {PlanetDAOImpl} from "../data/dao/impl/PlanetDAOImpl";
 
-import {Post} from "../model/Post";
-import {environment} from "../../environments/environment";
-import {map} from "rxjs/operators";
+import {Planet} from "../model/Planet";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -14,14 +12,14 @@ export class DataHandlerService {
 
   constructor(
     private http: HttpClient,
-    private postDaoArray: PostDAOArray
+    private planetDao: PlanetDAOImpl
   ) {}
 
-  getAllPosts(): Observable<Post[]> {
-    return this.postDaoArray.getAll()
+  getAllPosts(): Observable<Planet[]> {
+    return this.planetDao.getAll()
   }
 
-  // getById(id: string): Observable<Post> {
+  // getById(id: string): Observable<Planet> {
   //   return this.postDaoArray.getById()
   // }
 

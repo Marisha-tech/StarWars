@@ -1,5 +1,5 @@
-<div *ngFor="let post of posts">
-  {{post.name}}
+<div *ngFor="let planet of planets">
+  {{planet.residents | json}
 </div>
 <div class="table-responsive">
   <table class="table v-middle">
@@ -21,28 +21,29 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let post of posts">
+    <tr *ngFor="let planet of planets">
       <td>
         <div class="d-flex align-items-center">
           <div class="">
-            <h4 class="m-b-0 font-16">{{post.name}}</h4>
+            <h4 class="m-b-0 font-16">{{planet.name}}</h4>
           </div>
         </div>
       </td>
-      <td>{{post.rotation_period}}</td>
-      <td>{{post.orbital_period}}</td>
-      <td>{{post.diameter}}</td>
-      <td>{{post.climate}}</td>
-      <td>{{post.gravity}}</td>
-      <td>{{post.terrain}}</td>
-      <td>{{post.surface_water}}</td>
-      <td>{{post.population}}</td>
-      <td>{{post.created | date: 'medium':'': 'ru'}}</td>
-      <td>{{post.edited | date: 'medium'}}</td>
-      <td>{{post.url}}</td>
+      <td>{{planet.rotation_period}}</td>
+      <td>{{planet.orbital_period}}</td>
+      <td>{{planet.diameter}}</td>
+      <td>{{planet.climate}}</td>
+      <td>{{planet.gravity}}</td>
+      <td>{{planet.terrain}}</td>
+      <td>{{planet.surface_water}}</td>
+      <td>{{planet.population}}</td>
+      <td>{{planet.created | date: 'medium':'': 'ru'}}</td>
+      <td>{{planet.edited | date: 'medium'}}</td>
+      <td>{{planet.url}}</td>
       <td>
         <button
-        [routerLink]="['/planets', post.id]">Open</button>
+          (click)="openPlanet($event)"
+        [routerLink]="['/planets', planet.id]">Open</button>
       </td>
     </tr>
     </tbody>

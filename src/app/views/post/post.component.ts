@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs";
-import {Post} from 'src/app/model/Post';
+import {Planet} from 'src/app/model/Planet';
 
 @Component({
   selector: 'app-post',
@@ -10,7 +10,7 @@ import {Post} from 'src/app/model/Post';
 })
 export class PostComponent implements OnInit {
 
-  post$!: Observable<Post>
+  post$!: Observable<Planet>
 
   constructor(
     private route: ActivatedRoute,

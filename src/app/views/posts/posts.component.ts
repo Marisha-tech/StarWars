@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit,} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {Post} from "../../model/Post";
+import {Planet} from "../../model/Planet";
 import {DataHandlerService} from "../../services/data-handler.service";
 
 
@@ -10,7 +10,7 @@ import {DataHandlerService} from "../../services/data-handler.service";
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit, OnDestroy {
-  posts: Post[] = []
+  planets: Planet[] = []
   postId?: string
   pSub: Subscription | any
 
@@ -18,9 +18,9 @@ export class PostsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.pSub = this.dataHandlerService.getAllPosts().subscribe(posts => {
-      this.posts = posts
-      console.log(posts)
+    this.pSub = this.dataHandlerService.getAllPosts().subscribe(planets => {
+      this.planets = planets
+      // console.log(planets)
     })
   }
 
@@ -30,4 +30,10 @@ export class PostsComponent implements OnInit, OnDestroy {
     }
   }
 
+  openPlanet($event: MouseEvent) {
+
+  //  this.planets.find((value) => value.name)
+    console.log(MouseEvent)
+    console.log(this.planets)
+  }
 }
