@@ -1,0 +1,50 @@
+<div *ngFor="let post of posts">
+  {{post.name}}
+</div>
+<div class="table-responsive">
+  <table class="table v-middle">
+    <thead>
+    <tr class="bg-light">
+      <th class="border-top-0">Name</th>
+      <th class="border-top-0">Rotation period</th>
+      <th class="border-top-0">Orbital period</th>
+      <th class="border-top-0">Diameter</th>
+      <th class="border-top-0">Climate</th>
+      <th class="border-top-0">Gravity</th>
+      <th class="border-top-0">Terrain</th>
+      <th class="border-top-0">Surface water</th>
+      <th class="border-top-0">Population</th>
+      <th class="border-top-0">Created</th>
+      <th class="border-top-0">Edited</th>
+      <th class="border-top-0">Url</th>
+      <th class="border-top-0">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let post of posts">
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="">
+            <h4 class="m-b-0 font-16">{{post.name}}</h4>
+          </div>
+        </div>
+      </td>
+      <td>{{post.rotation_period}}</td>
+      <td>{{post.orbital_period}}</td>
+      <td>{{post.diameter}}</td>
+      <td>{{post.climate}}</td>
+      <td>{{post.gravity}}</td>
+      <td>{{post.terrain}}</td>
+      <td>{{post.surface_water}}</td>
+      <td>{{post.population}}</td>
+      <td>{{post.created | date: 'medium':'': 'ru'}}</td>
+      <td>{{post.edited | date: 'medium'}}</td>
+      <td>{{post.url}}</td>
+      <td>
+        <button
+        [routerLink]="['/planets', post.id]">Open</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
