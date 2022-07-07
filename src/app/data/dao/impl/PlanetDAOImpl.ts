@@ -20,9 +20,11 @@ export class PlanetDAOImpl implements PlanetDAO {
     return this.http.get(`${environment.swapiUrl}/planets`)
       .pipe(map((data: any) => {
         let planetList = data['results']
+
         return planetList
       }))
   }
+
 
   findByName(name: string) {
 
@@ -32,7 +34,7 @@ export class PlanetDAOImpl implements PlanetDAO {
     return this.http.get<Planet>(`${environment.swapiUrl}/planets/${id}`)
       .pipe(
         map((post: Planet) => {
-          console.log(post)
+          console.log(post, 'PlanetDAOImpl')
           return {
             ...post
           }

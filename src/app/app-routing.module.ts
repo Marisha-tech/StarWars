@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import {DashboardComponent} from "./views/dashboard/dashboard.component";
-import {PostComponent} from "./views/post/post.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {PlanetComponent} from "./views/planet/planet.component";
+import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.component";
+import {HomePageComponent} from "./views/home-page/home-page.component";
 
 const routes: Routes = [
   {
-    path: '', component: DashboardComponent, children: [
-      {path: 'planets/:id', component: PostComponent}
+    path: '', component: MainLayoutComponent, children: [
+      {path: '', redirectTo: '/', pathMatch: 'full'},
+      {path: '', component: HomePageComponent},
+      {path: 'planets/:name', component: PlanetComponent}
     ]
   }
 ];
@@ -15,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

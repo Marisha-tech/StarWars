@@ -15,7 +15,7 @@ export class DataHandlerService {
     private planetDao: PlanetDAOImpl
   ) {}
 
-  getAllPosts(): Observable<Planet[]> {
+  getAllPlanets(): Observable<Planet[]> {
     return this.planetDao.getAll()
   }
 

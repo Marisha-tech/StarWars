@@ -4,13 +4,13 @@ import {Observable} from "rxjs";
 import {Planet} from 'src/app/model/Planet';
 
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  selector: 'app-planet',
+  templateUrl: './planet.component.html',
+  styleUrls: ['./planet.component.scss']
 })
-export class PostComponent implements OnInit {
+export class PlanetComponent implements OnInit {
 
-  post$!: Observable<Planet>
+  planet$!: Observable<Planet>
 
   constructor(
     private route: ActivatedRoute,
@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.post$)
+    console.log(this.planet$)
   }
 
 }

@@ -1,22 +1,22 @@
 <div *ngFor="let planet of planets">
-  {{planet.residents | json}
+  {{planet | json}
 </div>
 <div class="table-responsive">
   <table class="table v-middle">
     <thead>
     <tr class="bg-light">
-      <th class="border-top-0">Name</th>
-      <th class="border-top-0">Rotation period</th>
-      <th class="border-top-0">Orbital period</th>
-      <th class="border-top-0">Diameter</th>
-      <th class="border-top-0">Climate</th>
-      <th class="border-top-0">Gravity</th>
-      <th class="border-top-0">Terrain</th>
-      <th class="border-top-0">Surface water</th>
-      <th class="border-top-0">Population</th>
-      <th class="border-top-0">Created</th>
-      <th class="border-top-0">Edited</th>
-      <th class="border-top-0">Url</th>
+      <th class="border-top-0" *ngFor="let columnNameProp of columnNames">{{columnNameProp | titlecase}}</th>
+<!--      <th class="border-top-0">Rotation period</th>-->
+<!--      <th class="border-top-0">Orbital period</th>-->
+<!--      <th class="border-top-0">Diameter</th>-->
+<!--      <th class="border-top-0">Climate</th>-->
+<!--      <th class="border-top-0">Gravity</th>-->
+<!--      <th class="border-top-0">Terrain</th>-->
+<!--      <th class="border-top-0">Surface water</th>-->
+<!--      <th class="border-top-0">Population</th>-->
+<!--      <th class="border-top-0">Created</th>-->
+<!--      <th class="border-top-0">Edited</th>-->
+<!--      <th class="border-top-0">Url</th>-->
       <th class="border-top-0">Action</th>
     </tr>
     </thead>
@@ -42,8 +42,7 @@
       <td>{{planet.url}}</td>
       <td>
         <button
-          (click)="openPlanet($event)"
-        [routerLink]="['/planets', planet.id]">Open</button>
+        [routerLink]="['/planets', planet.name | lowercase]">Open</button>
       </td>
     </tr>
     </tbody>

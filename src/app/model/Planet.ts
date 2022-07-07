@@ -32,4 +32,5 @@ export class Planet {
     this.url = url;
     this.residents = residents;
   }
+
 }
