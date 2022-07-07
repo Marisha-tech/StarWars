@@ -30,8 +30,19 @@ export class PlanetDAOImpl implements PlanetDAO {
 
   }
 
-  getById(id: number): Observable<Planet> {
+  /*getById(id: number): Observable<Planet> {
     return this.http.get<Planet>(`${environment.swapiUrl}/planets/${id}`)
+      .pipe(
+        map((post: Planet) => {
+          console.log(post, 'PlanetDAOImpl')
+          return {
+            ...post
+          }
+        })
+      )
+  }*/
+  getByUrl(url: string): Observable<Planet> {
+    return this.http.get<Planet>(url)
       .pipe(
         map((post: Planet) => {
           console.log(post, 'PlanetDAOImpl')

@@ -1,9 +1,12 @@
-import {Component, OnDestroy, OnInit,} from '@angular/core';
+import {Component, Injectable, Input, OnDestroy, OnInit,} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Planet} from "../../model/Planet";
 import {DataHandlerService} from "../../services/data-handler.service";
-import {map} from "rxjs/operators";
+import {SharedService} from "../../services/shared.service";
 
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-planets',
@@ -11,13 +14,16 @@ import {map} from "rxjs/operators";
   styleUrls: ['./planets.component.scss']
 })
 export class PlanetsComponent implements OnInit, OnDestroy {
+
   planets: Planet[] = []
   columnNames?: any
   planetProp?: any
   planetUrl?: any
   pSub: Subscription | any
 
-  constructor(private dataHandlerService: DataHandlerService) {
+  constructor(private dataHandlerService: DataHandlerService,
+              private shared: SharedService) {
+
   }
 
   ngOnInit(): void {
@@ -32,12 +38,15 @@ export class PlanetsComponent implements OnInit, OnDestroy {
         .map(el => el.split('_').join(' '))
 
 
-      this.planetUrl = planets
-        .map(el => el.url.split('/'))
+      // this.planetUrl = planets
+      //   .map(el => el.url.split('/'))
+
+      console.log(this.planetUrl)
       // .forEach(item => console.log(item[5]))
 
-      let objList = this.planets.map((el, index) => console.log(el.url.split('/')))
+      // console.log(this.planets)
 
+      // let objList = this.planets.map((el, index) => console.log(el.url.split('/')))
 
 
       // for (const item in this.planetUrl) {

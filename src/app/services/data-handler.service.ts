@@ -19,6 +19,11 @@ export class DataHandlerService {
     return this.planetDao.getAll()
   }
 
+  getByUrl(url: string): Observable<Planet> {
+    return this.planetDao.getByUrl(url)
+  }
+
+
   // getById(id: string): Observable<Planet> {
   //   return this.postDaoArray.getById()
   // }
