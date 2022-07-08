@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Observable} from "rxjs";
 import {Planet} from 'src/app/model/Planet';
 import {DataHandlerService} from "../../services/data-handler.service";
 import {PlanetsComponent} from "../planets/planets.component";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-planet',
@@ -12,11 +13,14 @@ import {PlanetsComponent} from "../planets/planets.component";
 })
 export class PlanetComponent implements OnInit {
 
-  planet$!: Observable<Planet>
+  planetList?: any
+  planetName: any
+  planetInfo: any
+  planetResidents?: any
+  url?: any
+  data?: any
 
-  @Input()
-  planetUrl: any
-
+  test: any
 
   constructor(
     private route: ActivatedRoute,
@@ -26,15 +30,30 @@ export class PlanetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      console.log(params)
+
+    // передано наименование планеты в адресную строку
+    this.test = this.route.params.subscribe((params: Params) => {
+      this.planetName = params
     })
-    // console.log(this.planet$)
 
-    this.dataHandlerService.getByUrl('')
+    this.dataHandlerService.getByName(this.planetList).subscribe(planet => {
+      this.planetList = planet
 
-    // console.log(this.planet$)
-    console.log(this.planets)
+      for (let i = 0; i < this.planetList.length; i++) {
+        if (this.planetList[i].name === this.planetName.name) {
+          this.planetInfo = this.planetList[i]
+        }
+      }
+      this.planetResidents = this.planetInfo.residents
+    })
+    // console.log(this.test.planetResidents)
+
+
+    // this.dataHandlerService.getByUrl(this.url).subscribe(planets => {
+    //   this.planet = planets
+    //   console.log(this.planet)
+    // })
+
   }
 
 }

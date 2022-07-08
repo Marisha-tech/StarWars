@@ -4,6 +4,7 @@ import {PlanetDAOImpl} from "../data/dao/impl/PlanetDAOImpl";
 
 import {Planet} from "../model/Planet";
 import {HttpClient} from "@angular/common/http";
+import {Resident} from "../model/Resident";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,16 @@ export class DataHandlerService {
     return this.planetDao.getAll()
   }
 
-  getByUrl(url: string): Observable<Planet> {
-    return this.planetDao.getByUrl(url)
+  // getByUrl(url: string): Observable<Planet> {
+  //   return this.planetDao.getByUrl(url)
+  // }
+
+  getByName(name: string): Observable<Planet> {
+    return this.planetDao.getByName(name)
+  }
+
+  getByResident(url: string): Observable<Resident> {
+    return this.planetDao.getResident(url)
   }
 
 

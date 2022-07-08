@@ -1,8 +1,8 @@
-import {Component, Injectable, Input, OnDestroy, OnInit,} from '@angular/core';
+import {Component, EventEmitter, Injectable, Input, OnDestroy, OnInit, Output,} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Planet} from "../../model/Planet";
 import {DataHandlerService} from "../../services/data-handler.service";
-import {SharedService} from "../../services/shared.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Injectable({
   providedIn: 'root'
@@ -15,18 +15,25 @@ import {SharedService} from "../../services/shared.service";
 })
 export class PlanetsComponent implements OnInit, OnDestroy {
 
+  public displayedColumns: string[] = ['Rotation period'];
+  public dataSource: MatTableDataSource<Planet> = new MatTableDataSource<Planet>()// контейнер - источник данных для таблицы displayedColumns
+
   planets: Planet[] = []
+  planet?: any
   columnNames?: any
   planetProp?: any
   planetUrl?: any
+
+  data: any
+
   pSub: Subscription | any
 
-  constructor(private dataHandlerService: DataHandlerService,
-              private shared: SharedService) {
-
+  constructor(
+    private dataHandlerService: DataHandlerService,) {
   }
 
   ngOnInit(): void {
+
     this.pSub = this.dataHandlerService.getAllPlanets().subscribe(planets => {
       this.planets = planets
 
@@ -38,31 +45,28 @@ export class PlanetsComponent implements OnInit, OnDestroy {
         .map(el => el.split('_').join(' '))
 
 
-      // this.planetUrl = planets
-      //   .map(el => el.url.split('/'))
+      this.planetUrl = planets
+        .map(el => el.url.split('/'))
 
-      console.log(this.planetUrl)
-      // .forEach(item => console.log(item[5]))
-
-      // console.log(this.planets)
-
-      // let objList = this.planets.map((el, index) => console.log(el.url.split('/')))
-
-
-      // for (const item in this.planetUrl) {
-      //   this.planets.push(this.planetUrl[item][5])
-      // }
-      // console.log(this.planets)
-
-      // console.log([...this.planetId].map((el,idx) => (idx === [...this.planetId].length-1) ? `${el}` : `${el}`))
+      // console.log(this.planetUrl, 'ВСЕ ПЛАНЕТЫ')
 
     })
+
   }
+
+  // getByUrl(planet: string) {
+  //   this.planetUrl = this.dataHandlerService.getByUrl(planet).subscribe(planet => {
+  //     this.planet = planet
+  //     // console.log(planet, '1111111111')
+  //   })
+  //
+  // }
 
   ngOnDestroy() {
     if (this.pSub) {
       this.pSub.unsubscribe()
     }
   }
+
 
 }

@@ -1,54 +1,53 @@
-<div *ngFor="let planet of planets">
-  {{planet | json}
-</div>
-<div class="table-responsive">
-  <table class="table v-middle">
-    <thead>
-    <tr class="bg-light">
-      <th class="border-top-0" *ngFor="let columnNameProp of columnNames">{{columnNameProp | titlecase}}</th>
-      <!--      <th class="border-top-0">Rotation period</th>-->
-      <!--      <th class="border-top-0">Orbital period</th>-->
-      <!--      <th class="border-top-0">Diameter</th>-->
-      <!--      <th class="border-top-0">Climate</th>-->
-      <!--      <th class="border-top-0">Gravity</th>-->
-      <!--      <th class="border-top-0">Terrain</th>-->
-      <!--      <th class="border-top-0">Surface water</th>-->
-      <!--      <th class="border-top-0">Population</th>-->
-      <!--      <th class="border-top-0">Created</th>-->
-      <!--      <th class="border-top-0">Edited</th>-->
-      <!--      <th class="border-top-0">Url</th>-->
-      <th class="border-top-0">Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let planet of planets">
-      <td>
-        <div class="d-flex align-items-center">
-          <div class="">
-            <h4 class="m-b-0 font-16">{{planet.name}}</h4>
+<div *ngIf="planets.length; else loading">
+  <div class="table-responsive">
+    <table class="table v-middle">
+      <thead>
+      <tr class="bg-light">
+        <th class="border-top-0" *ngFor="let columnNameProp of columnNames">{{columnNameProp | titlecase}}</th>
+        <!--      <th class="border-top-0">Rotation period</th>-->
+        <!--      <th class="border-top-0">Orbital period</th>-->
+        <!--      <th class="border-top-0">Diameter</th>-->
+        <!--      <th class="border-top-0">Climate</th>-->
+        <!--      <th class="border-top-0">Gravity</th>-->
+        <!--      <th class="border-top-0">Terrain</th>-->
+        <!--      <th class="border-top-0">Surface water</th>-->
+        <!--      <th class="border-top-0">Population</th>-->
+        <!--      <th class="border-top-0">Created</th>-->
+        <!--      <th class="border-top-0">Edited</th>-->
+        <!--      <th class="border-top-0">Url</th>-->
+        <th class="border-top-0">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let planet of planets">
+        <td>
+          <div class="d-flex align-items-center">
+              <span>{{planet.name}}</span>
           </div>
-        </div>
-      </td>
-      <td>{{planet.rotation_period}}</td>
-      <td>{{planet.orbital_period}}</td>
-      <td>{{planet.diameter}}</td>
-      <td>{{planet.climate}}</td>
-      <td>{{planet.gravity}}</td>
-      <td>{{planet.terrain}}</td>
-      <td>{{planet.surface_water}}</td>
-      <td>{{planet.population}}</td>
-      <td>{{planet.created | date: 'medium':'': 'ru'}}</td>
-      <td>{{planet.edited | date: 'medium'}}</td>
-      <td>{{planet.url}}</td>
-      <td>
-        <button
-          [routerLink]="['/planets', planet.name | lowercase]">Open
-        </button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+        </td>
+        <td>{{planet.rotation_period}}</td>
+        <td>{{planet.orbital_period}}</td>
+        <td>{{planet.diameter}}</td>
+        <td>{{planet.climate}}</td>
+        <td>{{planet.gravity}}</td>
+        <td>{{planet.terrain}}</td>
+        <td>{{planet.surface_water}}</td>
+        <td>{{planet.population}}</td>
+        <td>{{planet.created | date: 'medium':'': 'ru'}}</td>
+        <td>{{planet.edited | date: 'medium'}}</td>
+        <td>{{planet.url}}</td>
+        <td>
+          <button mat-flat-button
+                  color="primary"
+                  [routerLink]="['/planets', planet.name]"
+          >Open
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
+  </div>
 </div>
-<!--<app-planet [data]="data"></app-planet>-->
+<ng-template class="not-found" #loading>Loading...</ng-template>
 

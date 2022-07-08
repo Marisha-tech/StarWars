@@ -1,9 +1,4 @@
-<p>post works!</p>
-<article
-  *ngIf="planet$ | async as post;"
-  class="card"
->
-  {{post}}
+Карточка планеты
 
-
-</article>
+{{planetResidents}}
+<app-resident [data]="planetResidents"></app-resident>
