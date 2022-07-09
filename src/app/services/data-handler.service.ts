@@ -1,40 +1,40 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {PlanetDAOImpl} from "../data/dao/impl/PlanetDAOImpl";
-
 import {Planet} from "../model/Planet";
-import {HttpClient} from "@angular/common/http";
 import {Resident} from "../model/Resident";
+import {ResidentDAOImpl} from "../data/dao/impl/ResidentDAOImpl";
+import {ResidentDAO} from "../data/dao/interface/ResidentDAO";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataHandlerService {
 
   constructor(
-    private http: HttpClient,
-    private planetDao: PlanetDAOImpl
-  ) {}
+    // private http: HttpClient,
+    private planetDao: PlanetDAOImpl,
+    private residentDao: ResidentDAOImpl
+  ) {
+  }
 
   getAllPlanets(): Observable<Planet[]> {
-    return this.planetDao.getAll()
+    return this.planetDao.getAllPlanets()
   }
 
-  // getByUrl(url: string): Observable<Planet> {
-  //   return this.planetDao.getByUrl(url)
-  // }
 
-  getByName(name: string): Observable<Planet> {
-    return this.planetDao.getByName(name)
+  getByNamePlanet(name: string): Observable<Planet> {
+    return this.planetDao.getByNamePlanet(name)
   }
+
+  getByIdPlanet(id: string): Observable<Planet> {
+    return this.planetDao.getByIDPlanet(id)
+  }
+
 
   getByResident(url: string): Observable<Resident> {
-    return this.planetDao.getResident(url)
+    return this.residentDao.getResident(url)
   }
-
-
-  // getById(id: string): Observable<Planet> {
-  //   return this.postDaoArray.getById()
-  // }
 
 }

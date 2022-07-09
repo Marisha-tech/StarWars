@@ -18,7 +18,7 @@ export class PlanetDAOImpl implements PlanetDAO {
   }
 
   //все планеты
-  getAll(): Observable<Planet[]> {
+  getAllPlanets(): Observable<Planet[]> {
     return this.http.get(`${environment.swapiUrl}/planets`)
       .pipe(map((data: any) => {
         let planetList = data['results']
@@ -26,8 +26,16 @@ export class PlanetDAOImpl implements PlanetDAO {
       }))
   }
 
+  // информация о планете по id
+  getByIDPlanet(id: string): Observable<Planet> {
+    return this.http.get<Planet>(`${environment.swapiUrl}/planets/${id}`)
+      .pipe(map((data: any) => {
+        return data
+      }))
+  }
+
 // информация о планете по name
-  getByName(name: string): Observable<Planet> {
+  getByNamePlanet(name: string): Observable<Planet> {
     return this.http.get<Planet>(`${environment.swapiUrl}/planets`)
       .pipe(map((data: any) => {
         let planetList = data['results']
@@ -36,17 +44,6 @@ export class PlanetDAOImpl implements PlanetDAO {
       }))
   }
 
-  // информация о резиденте
-  getResident(url: string): Observable<Resident> {
-    return this.http.get(`https://swapi.dev/api/people/1/`)
-      .pipe(
-        map((data: any) => {
-          let test = data
-          console.log(test)
-          return test
-        })
-      )
-  }
 
   /*getById(id: number): Observable<Planet> {
     return this.http.get<Planet>(`${environment.swapiUrl}/planets/${id}`)

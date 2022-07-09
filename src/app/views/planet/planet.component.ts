@@ -17,6 +17,7 @@ export class PlanetComponent implements OnInit {
   planetName: any
   planetInfo: any
   planetResidents?: any
+  planetId?: any
   url?: any
   data?: any
 
@@ -25,7 +26,7 @@ export class PlanetComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataHandlerService: DataHandlerService,
-    private planets: PlanetsComponent,
+    // private planets: PlanetsComponent,
   ) {
   }
 
@@ -34,20 +35,27 @@ export class PlanetComponent implements OnInit {
     // передано наименование планеты в адресную строку
     this.test = this.route.params.subscribe((params: Params) => {
       this.planetName = params
+      this.planetId = params['name']
+
+      this.dataHandlerService.getByIdPlanet(this.planetId).subscribe(planet => {
+        console.log(planet)
+      })
+
     })
 
-    this.dataHandlerService.getByName(this.planetList).subscribe(planet => {
-      this.planetList = planet
 
-      for (let i = 0; i < this.planetList.length; i++) {
-        if (this.planetList[i].name === this.planetName.name) {
-          this.planetInfo = this.planetList[i]
-        }
-      }
-      this.planetResidents = this.planetInfo.residents
-    })
-    // console.log(this.test.planetResidents)
 
+    // this.dataHandlerService.getByNamePlanet(this.planetList).subscribe(planet => {
+    //
+    //   this.planetList = planet
+    //
+    //   for (let i = 0; i < this.planetList.length; i++) {
+    //     if (this.planetList[i].name === this.planetName.name) {
+    //       this.planetInfo = this.planetList[i]
+    //     }
+    //   }
+    //   this.planetResidents = this.planetInfo.residents
+    // })
 
     // this.dataHandlerService.getByUrl(this.url).subscribe(planets => {
     //   this.planet = planets

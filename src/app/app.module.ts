@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import { ResidentComponent } from './views/resident/resident.component';
+import {IdPlanetPipe} from "./pipe/idPlanet.pipe";
 
 //локализация для вывода даты на русском
 registerLocaleData(ruLocale, 'ru')
@@ -33,7 +34,8 @@ registerLocaleData(ruLocale, 'ru')
     PlanetComponent,
     PlanetsComponent,
     MainLayoutComponent,
-    ResidentComponent
+    ResidentComponent,
+    IdPlanetPipe,
   ],
   imports: [
     BrowserModule,

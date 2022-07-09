@@ -1,3 +1,8 @@
+{{planetUrl}}
+<div *ngFor="let planet of planets">
+
+</div>
+
 <div *ngIf="planets.length; else loading">
   <div class="table-responsive">
     <table class="table v-middle">
@@ -15,6 +20,7 @@
         <!--      <th class="border-top-0">Created</th>-->
         <!--      <th class="border-top-0">Edited</th>-->
         <!--      <th class="border-top-0">Url</th>-->
+        <th class="border-top-0">ID</th>
         <th class="border-top-0">Action</th>
       </tr>
       </thead>
@@ -22,7 +28,7 @@
       <tr *ngFor="let planet of planets">
         <td>
           <div class="d-flex align-items-center">
-              <span>{{planet.name}}</span>
+            <span>{{planet.name}}</span>
           </div>
         </td>
         <td>{{planet.rotation_period}}</td>
@@ -36,10 +42,11 @@
         <td>{{planet.created | date: 'medium':'': 'ru'}}</td>
         <td>{{planet.edited | date: 'medium'}}</td>
         <td>{{planet.url}}</td>
+        <td>{{planet.url | idPlanet}}</td>
         <td>
           <button mat-flat-button
                   color="primary"
-                  [routerLink]="['/planets', planet.name]"
+                  [routerLink]="['/planets', planet.url | idPlanet]"
           >Open
           </button>
         </td>

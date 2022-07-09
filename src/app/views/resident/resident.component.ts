@@ -7,14 +7,14 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ResidentComponent implements OnInit {
 
-  @Input()
-  data: any
+  // @Input()
+  // data: any
 
   constructor() { }
 
   ngOnInit(): void {
 
-    console.log(this.data)
+    // console.log(this.data)
   }
 
 }

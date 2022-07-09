@@ -44,9 +44,11 @@ export class PlanetsComponent implements OnInit, OnDestroy {
         })
         .map(el => el.split('_').join(' '))
 
-
+      //не надо
       this.planetUrl = planets
         .map(el => el.url.split('/'))
+
+      // console.log(this.planetUrl)
 
       // console.log(this.planetUrl, 'ВСЕ ПЛАНЕТЫ')
 
