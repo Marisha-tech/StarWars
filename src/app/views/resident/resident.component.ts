@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Resident} from "../../model/Resident";
 
 @Component({
   selector: 'app-resident',
@@ -7,14 +8,16 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ResidentComponent implements OnInit {
 
-  // @Input()
-  // data: any
+  @Input()
+  planetResidents: any
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
 
-    // console.log(this.data)
+    // console.log(this.planetResidents, 'Component resident')
+
   }
 
 }

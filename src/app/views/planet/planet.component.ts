@@ -1,10 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {Observable} from "rxjs";
-import {Planet} from 'src/app/model/Planet';
 import {DataHandlerService} from "../../services/data-handler.service";
-import {PlanetsComponent} from "../planets/planets.component";
-import {switchMap} from "rxjs/operators";
+import {Resident} from "../../model/Resident";
 
 @Component({
   selector: 'app-planet',
@@ -13,55 +10,42 @@ import {switchMap} from "rxjs/operators";
 })
 export class PlanetComponent implements OnInit {
 
-  planetList?: any
-  planetName: any
-  planetInfo: any
-  planetResidents?: any
-  planetId?: any
-  url?: any
-  data?: any
-
-  test: any
+  private planetParam: any
+  public planetInfo: any
+  public planetResidents: Resident[] = []
+  private planetId?: any
+  private planet: any
+  private residentUrl: any
 
   constructor(
     private route: ActivatedRoute,
     private dataHandlerService: DataHandlerService,
-    // private planets: PlanetsComponent,
   ) {
   }
 
   ngOnInit(): void {
 
     // передано наименование планеты в адресную строку
-    this.test = this.route.params.subscribe((params: Params) => {
-      this.planetName = params
+    this.planetParam = this.route.params.subscribe((params: Params) => {
       this.planetId = params['name']
-
-      this.dataHandlerService.getByIdPlanet(this.planetId).subscribe(planet => {
-        console.log(planet)
-      })
-
     })
 
+    this.dataHandlerService.getByIdPlanet(this.planetId).subscribe(planet => {
 
+      this.planetInfo = Object.entries(planet)
+        .filter(([key]) => key !== 'residents' && key !== 'films')
+        .map(([key, value]) => [key.replace('_', ' '), value])
 
-    // this.dataHandlerService.getByNamePlanet(this.planetList).subscribe(planet => {
-    //
-    //   this.planetList = planet
-    //
-    //   for (let i = 0; i < this.planetList.length; i++) {
-    //     if (this.planetList[i].name === this.planetName.name) {
-    //       this.planetInfo = this.planetList[i]
-    //     }
-    //   }
-    //   this.planetResidents = this.planetInfo.residents
-    // })
+      for (const residentUrl of planet.residents) {
+        this.residentUrl = residentUrl
+        this.dataHandlerService.getByResident(this.residentUrl).subscribe(resident => {
+          this.planetResidents.push(resident)
 
-    // this.dataHandlerService.getByUrl(this.url).subscribe(planets => {
-    //   this.planet = planets
-    //   console.log(this.planet)
-    // })
-
+        })//////// getByResident
+      }
+    }) //////// getByIdPlanet
+    // console.log(this.planetResidents, 'Planet component');
+    console.log(this.planetResidents)
   }
 
 }

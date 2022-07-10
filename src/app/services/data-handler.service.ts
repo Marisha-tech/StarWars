@@ -1,10 +1,9 @@
-import {Inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {PlanetDAOImpl} from "../data/dao/impl/PlanetDAOImpl";
 import {Planet} from "../model/Planet";
 import {Resident} from "../model/Resident";
 import {ResidentDAOImpl} from "../data/dao/impl/ResidentDAOImpl";
-import {ResidentDAO} from "../data/dao/interface/ResidentDAO";
 
 @Injectable({
   providedIn: 'root'

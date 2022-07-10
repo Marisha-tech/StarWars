@@ -8,7 +8,6 @@ import {Injectable} from "@angular/core";
 @Injectable({
   providedIn: 'root'
 })
-
 export class ResidentDAOImpl implements ResidentDAO {
 
   constructor(private http: HttpClient) {
@@ -28,9 +27,7 @@ export class ResidentDAOImpl implements ResidentDAO {
     return this.http.get(url)
       .pipe(
         map((data: any) => {
-          let test = data
-          console.log(test)
-          return test
+          return data
         })
       )
   }

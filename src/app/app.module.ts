@@ -12,15 +12,16 @@ import {HttpClientModule} from '@angular/common/http';
 
 import ruLocale from "@angular/common/locales/ru";
 import {registerLocaleData} from '@angular/common';
-import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MainLayoutComponent} from './shared/components/main-layout/main-layout.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatTableModule} from "@angular/material/table";
 import {CdkTableModule} from "@angular/cdk/table";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
-import { ResidentComponent } from './views/resident/resident.component';
+import {ResidentComponent} from './views/resident/resident.component';
 import {IdPlanetPipe} from "./pipe/idPlanet.pipe";
+import {ResidentDAOImpl} from "./data/dao/impl/ResidentDAOImpl";
 
 //локализация для вывода даты на русском
 registerLocaleData(ruLocale, 'ru')
