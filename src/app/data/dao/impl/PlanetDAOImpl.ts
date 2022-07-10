@@ -35,18 +35,18 @@ export class PlanetDAOImpl implements PlanetDAO {
   }
 
 // информация о планете по name
-  getByNamePlanet(name: string): Observable<Planet> {
-    return this.http.get<Planet>(`${environment.swapiUrl}/planets`)
-      .pipe(map((data: any) => {
-        let planetList = data['results']
-        // console.log(planetList)
-        return planetList
-      }))
-  }
+//   getByNamePlanet(name: string): Observable<Planet> {
+//     return this.http.get<Planet>(`${environment.swapiUrl}/planets`)
+//       .pipe(map((data: any) => {
+//         let planetList = data['results']
+//         // console.log(planetList)
+//         return planetList
+//       }))
+//   }
 
 
   /*getById(id: number): Observable<Planet> {
-    return this.http.get<Planet>(`${environment.swapiUrl}/planets/${id}`)
+    return this.http.get<Planet>(`${environment.swapiUrl}/planet-list/${id}`)
       .pipe(
         map((post: Planet) => {
           console.log(post, 'PlanetDAOImpl')

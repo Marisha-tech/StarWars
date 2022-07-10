@@ -3,19 +3,10 @@
 <table class="table v-middle">
   <tbody>
   <tr *ngFor="let planet of planetInfo">
-    <td>
-      {{planet[0] | lowercase}}
-    </td>
-    <td>
-      {{planet[1]}}
-    </td>
+    <td>{{planet[0] | lowercase}}</td>
+    <td>{{planet[1]}}</td>
   </tr>
-  <!--  <tr *ngFor="let resident of planetResidents">-->
-  <!--    <td>-->
-  <!--      {{resident}}-->
-  <!--    </td>-->
-  <!--  </tr>-->
   </tbody>
 </table>
 
-<app-resident [planetResidents]="planetResidents"></app-resident>
+<app-resident [residentUrl]="residentUrl"></app-resident>

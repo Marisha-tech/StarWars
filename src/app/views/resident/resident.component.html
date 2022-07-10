@@ -1,29 +1,49 @@
-<h2>Resident information</h2>
-<div *ngIf="planetResidents.length; else loading">
+<div *ngIf="planetResidents.length>0">
+  <h2>Resident information</h2>
+  <div class="col-md-3 col-sm-12">
+    <mat-form-field class="example-form-field task__input">
+      <mat-label class="task__placeholder">Фильтр по полу</mat-label>
+      <mat-select
+        (valueChange)="onFilterByGender($event)"
+        [value]="selectedGenderFilter">
+        <mat-option [value]="null">All</mat-option>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+
+      <!--    <button-->
+      <!--      (click)="$event.stopPropagation(); onFilterByPriority(null)"-->
+      <!--      *ngIf="selectedPriorityFilter != null"-->
+      <!--      class="btn-gray"-->
+      <!--      matSuffix-->
+      <!--      mat-icon-button-->
+      <!--      aria-label="Clear">-->
+      <!--      <mat-icon>clear</mat-icon>-->
+      <!--    </button>-->
+    </mat-form-field>
+  </div>
+
+
   <div class="table-responsive">
     <table class="table v-middle">
-      <thead>
-      <tr class="bg-light">
-        <th class="border-top-0">Rotation period</th>
-        <th class="border-top-0">Orbital period</th>
-        <th class="border-top-0">Diameter</th>
-        <th class="border-top-0">Climate</th>
-        <th class="border-top-0">Gravity</th>
-        <th class="border-top-0">Terrain</th>
-        <th class="border-top-0">Surface water</th>
-        <th class="border-top-0">Population</th>
-        <th class="border-top-0">Created</th>
-        <th class="border-top-0">Edited</th>
-        <th class="border-top-0">Url</th>
-      </tr>
-      </thead>
+      <!--  <thead>
+        <tr class="bg-light">
+          <th class="border-top-0">Rotation period</th>
+          <th class="border-top-0">Orbital period</th>
+          <th class="border-top-0">Diameter</th>
+          <th class="border-top-0">Climate</th>
+          <th class="border-top-0">Gravity</th>
+          <th class="border-top-0">Terrain</th>
+          <th class="border-top-0">Surface water</th>
+          <th class="border-top-0">Population</th>
+          <th class="border-top-0">Created</th>
+          <th class="border-top-0">Edited</th>
+          <th class="border-top-0">Url</th>
+        </tr>
+        </thead>-->
       <tbody>
       <tr *ngFor="let resident of planetResidents">
-        <td>
-          <div class="d-flex align-items-center">
-            <span>{{resident.name}}</span>
-          </div>
-        </td>
+        <td>{{resident.name}}</td>
         <td>{{resident.height}}</td>
         <td>{{resident.mass}}</td>
         <td>{{resident.hair_color}}</td>
@@ -31,12 +51,12 @@
         <td>{{resident.eye_color}}</td>
         <td>{{resident.birth_year}}</td>
         <td>{{resident.gender}}</td>
-        <td>{{resident.homeworld}}</td>
-        <td>{{resident.films}}</td>
-        <td>{{resident.species}}</td>
-        <td>{{resident.vehicles}}</td>
-        <td>{{resident.starships}}</td>
-        <td>{{resident.created | date: 'medium':'': 'ru'}}</td>
+        <!--        <td>{{resident.homeworld}}</td>-->
+        <!--        <td>{{resident.films}}</td>-->
+        <!--        <td>{{resident.species}}</td>-->
+        <!--        <td>{{resident.vehicles}}</td>-->
+        <!--        <td>{{resident.starships}}</td>-->
+        <td>{{resident.created | date: 'medium'}}</td>
         <td>{{resident.edited | date: 'medium'}}</td>
         <td>{{resident.url | date: 'medium'}}</td>
       </tr>
@@ -44,5 +64,3 @@
     </table>
   </div>
 </div>
-<ng-template class="not-found" #loading>Loading...</ng-template>
-
