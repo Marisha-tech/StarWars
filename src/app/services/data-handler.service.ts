@@ -23,9 +23,9 @@ export class DataHandlerService {
   }
 
 
-  getByNamePlanet(name: string): Observable<Planet> {
-    return this.planetDao.getByNamePlanet(name)
-  }
+  // getByNamePlanet(name: string): Observable<Planet> {
+  //   return this.planetDao.getByNamePlanet(name)
+  // }
 
   getByIdPlanet(id: string): Observable<Planet> {
     return this.planetDao.getByIDPlanet(id)

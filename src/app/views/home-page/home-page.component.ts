@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DataHandlerService} from "../../services/data-handler.service";
-import {Planet} from "../../model/Planet";
 
 @Component({
   selector: 'app-home-page',
@@ -9,19 +7,8 @@ import {Planet} from "../../model/Planet";
 })
 export class HomePageComponent implements OnInit {
 
-  planets: Planet[] = []
-  planetUrl?: any
-
-  constructor(private dataHandlerService: DataHandlerService) {
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    // this.dataHandlerService.getAllPlanets().subscribe(planets => {
-    //   this.planets = planets
-    //
-    //   this.planetUrl = planets
-    //     .map(el => el.url.split('/'))
-    // })
   }
-
 }

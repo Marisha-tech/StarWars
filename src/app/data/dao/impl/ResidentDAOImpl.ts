@@ -15,7 +15,7 @@ export class ResidentDAOImpl implements ResidentDAO {
 
   //все планеты
   // getAll(url: string): Observable<Resident[]> {
-  //   return this.http.get(`${environment.swapiUrl}/planets`)
+  //   return this.http.get(`${environment.swapiUrl}/planet-list`)
   //     .pipe(map((data: any) => {
   //       let planetList = data['results']
   //       return planetList
@@ -24,9 +24,10 @@ export class ResidentDAOImpl implements ResidentDAO {
 
   // информация о резиденте
   getResident(url: string): Observable<Resident> {
-    return this.http.get(url)
+    return this.http.get<Resident>(url)
       .pipe(
-        map((data: any) => {
+        map((data: Resident) => {
+
           return data
         })
       )

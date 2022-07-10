@@ -1,10 +1,11 @@
-import { Planet } from "src/app/model/Planet";
-import {CommonDAO} from "./CommonDAO";
+import {Planet} from "src/app/model/Planet";
 import {Observable} from "rxjs";
 
-export interface PlanetDAO extends CommonDAO<Planet>{
+export interface PlanetDAO {
 
-  getByNamePlanet(name: string): Observable<Planet>
+  getAllPlanets(): Observable<Planet[]>
+
+  // getByNamePlanet(name: string): Observable<Planet>
 
   getByIDPlanet(id: string): Observable<Planet>
 }

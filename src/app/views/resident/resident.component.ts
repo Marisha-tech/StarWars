@@ -1,23 +1,43 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Injectable, Input, OnChanges, Output} from '@angular/core';
+import {ResidentService} from "../../services/resident.service";
 import {Resident} from "../../model/Resident";
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-resident',
   templateUrl: './resident.component.html',
   styleUrls: ['./resident.component.scss']
 })
-export class ResidentComponent implements OnInit {
+export class ResidentComponent implements OnChanges {
+
+  public planetResidents: Resident[] = []
+  public planetResidentsAll: Resident[] = []
 
   @Input()
-  planetResidents: any
+  residentUrl: string[] = []
 
-  constructor() {
+  private male: any;
+  private female: any
+
+  public selectedGenderFilter!: string;
+
+  constructor(private residentService: ResidentService) {
   }
 
-  ngOnInit(): void {
+  ngOnChanges() {
 
-    // console.log(this.planetResidents, 'Component resident')
-
+    for (const residentUrl of this.residentUrl) {
+      this.residentService.getByResident(residentUrl).subscribe(resident => {
+        this.planetResidents.push(resident)
+        this.planetResidentsAll.push(resident)
+      })
+    }
   }
 
+  onFilterByGender(value: string) {
+    this.planetResidents = this.planetResidentsAll.filter(planet => planet.gender === value || value === null)
+  }
 }

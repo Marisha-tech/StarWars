@@ -15,7 +15,7 @@
         <!--      <th class="border-top-0">Created</th>-->
         <!--      <th class="border-top-0">Edited</th>-->
         <!--      <th class="border-top-0">Url</th>-->
-        <th class="border-top-0">ID</th>
+<!--        <th class="border-top-0">ID</th>-->
         <th class="border-top-0">Action</th>
       </tr>
       </thead>
@@ -34,10 +34,10 @@
         <td>{{planet.terrain}}</td>
         <td>{{planet.surface_water}}</td>
         <td>{{planet.population}}</td>
-        <td>{{planet.created | date: 'medium':'': 'ru'}}</td>
+        <td>{{planet.created | date: 'medium'}}</td>
         <td>{{planet.edited | date: 'medium'}}</td>
-        <td>{{planet.url}}</td>
-        <td>{{planet.url | idPlanet}}</td>
+<!--        <td>{{planet.url}}</td>-->
+<!--        <td>{{planet.url | idPlanet}}</td>-->
         <td>
           <button mat-flat-button
                   color="primary"
