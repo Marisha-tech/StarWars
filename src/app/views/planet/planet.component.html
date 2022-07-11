@@ -1,8 +1,8 @@
-<h1 class="planet__title title">Planet Information</h1>
+<h1 class="planet__title title">Planet Information {{planetName}}</h1>
 
 <div class="planet__card">
   <div class="planet__img">
-    <img src="{{images}}" alt="">
+    <img src="assets/img/planet.png" alt="">
   </div>
   <div class="planet__info">
     <table class="table v-middle">
@@ -16,6 +16,8 @@
   </div>
 </div>
 
+
+
 <!--<table class="table v-middle">-->
 <!--  <tbody>-->
 <!--  <tr *ngFor="let planet of planetInfo">-->
@@ -25,4 +27,5 @@
 <!--  </tbody>-->
 <!--</table>-->
 
-<app-resident [residentUrl]="residentUrl"></app-resident>
+<app-resident [residentUrl]="residentUrl" [planetName]="planetName"></app-resident>
+<button mat-flat-button color="primary" [routerLink]="['/']">Back</button>

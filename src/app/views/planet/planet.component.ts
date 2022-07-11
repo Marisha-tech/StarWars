@@ -25,7 +25,7 @@ export class PlanetComponent implements OnInit {
   // public planetResidents: Resident[] = []
   private planetId?: any
   public residentUrl: string[] = []
-  public images: any
+  public planetName?: string
 
   constructor(
     private route: ActivatedRoute,
@@ -46,14 +46,10 @@ export class PlanetComponent implements OnInit {
         .map(([key, value]) => [key.replace('_', ' '), value])
 
       this.residentUrl = planet.residents
+      this.planetName = planet.name
 
       this.dataSource = new MatTableDataSource<Planet>(this.planetInfo)
 
-
-
     })
-    const random = Math.floor(Math.random() * (1 - 10)) + 10;
-    this.images = `https://picsum.photos/id/${random}/400/400`;
-
   }
 }

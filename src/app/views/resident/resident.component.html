@@ -1,58 +1,78 @@
-<div class="resident">
-  <div class="resident__card" *ngFor="let resident of planetResidents">
-    <div class="resident__img">
-      <img src="{{image}}" alt="">
-    </div>
-    <div class="resident__info">
-      <span class="resident__title">{{resident.name}}</span>
-      <span class="resident__info--height">
-        Height: {{resident.height}}
-        <!--        <td>{{resident.homeworld}}</td>-->
-        <!--        <td>{{resident.films}}</td>-->
-        <!--        <td>{{resident.species}}</td>-->
-        <!--        <td>{{resident.vehicles}}</td>-->
-        <!--        <td>{{resident.starships}}</td>-->
-      </span>
-      <span class="resident__info--mass">Mass:
-        {{resident.mass}}
-      </span>
-      <span class="resident__info--hair-color">
-        Hair color:
-        {{resident.hair_color}}
-      </span>
-      <span class="resident__info--skin-color">
-        Skin color:
-        {{resident.skin_color}}
-      </span>
-      <span class="resident__info--eye-color">
-        Eye color:
-        {{resident.eye_color}}
-      </span>
-      <span class="resident__info--birth">
-        Birth year:
-        {{resident.birth_year}}
-      </span>
-      <span class="resident__info--gender">
-        Gender:
-        {{resident.gender}}
-      </span>
-      <span class="resident__info--created">
-        Created:
-        {{resident.created | date: 'longDate'}}
-      </span>
-      <span class="resident__info--edited">
-        Edited:
-        {{resident.edited | date: 'longDate'}}
-      </span>
-      <span class="resident__info--url">
-        Url:
-        {{resident.url }}
-      </span>
+<div *ngIf="planetResidents.length>0">
+  <h2>Residents of planet {{planetName}}</h2>
+
+  <div class="resident__filter-gender">
+    <mat-form-field class="example-form-field">
+      <mat-label>Filter by gender</mat-label>
+      <mat-select
+        (valueChange)="onFilterByGender($event)"
+        [value]="selectedGenderFilter">
+        <mat-option [value]="null">all</mat-option>
+        <mat-option value="male">male</mat-option>
+        <mat-option value="female">female</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="resident">
+    <div class="resident__card" *ngFor="let resident of planetResidents">
+      <div class="resident__img">
+        <img src="assets/img/planet.png" alt="">
+      </div>
+
+      <div class="resident__info">
+        <div class="resident__info-title">{{resident.name}}</div>
+        <div class="resident__info-height">
+          <span class="resident__prop">Height:</span>
+          {{resident.height}}
+          <!--        <td>{{resident.homeworld}}</td>-->
+          <!--        <td>{{resident.films}}</td>-->
+          <!--        <td>{{resident.species}}</td>-->
+          <!--        <td>{{resident.vehicles}}</td>-->
+          <!--        <td>{{resident.starships}}</td>-->
+        </div>
+        <div class="resident__info-mass">
+          <span class="resident__prop">Mass:</span>
+          {{resident.mass}}
+        </div>
+        <div class="resident__info-hair-color">
+          <span class="resident__prop">Hair color:</span>
+          {{resident.hair_color}}
+        </div>
+        <div class="resident__info-skin-color">
+          <span class="resident__prop">Skin color:</span>
+          {{resident.skin_color}}
+        </div>
+        <div class="resident__info-eye-color">
+          <span class="resident__prop">Eye color:</span>
+          {{resident.eye_color}}
+        </div>
+        <div class="resident__info-birth">
+          <span class="resident__prop">Birth year:</span>
+          {{resident.birth_year}}
+        </div>
+        <div class="resident__info-gender">
+          <span class="resident__prop">Gender:</span>
+          {{resident.gender}}
+        </div>
+        <div class="resident__info-created">
+          <span class="resident__prop">Created:</span>
+          {{resident.created | date: 'longDate'}}
+        </div>
+        <div class="resident__info-edited">
+          <span class="resident__prop">Edited:</span>
+          {{resident.edited | date: 'longDate'}}
+        </div>
+        <div class="resident__info-url">
+          <span class="resident__prop">Url:</span>
+          {{resident.url }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="planetResidents.length>0">
+<!--<div *ngIf="planetResidents.length>0">
   <h2>Resident information</h2>
   <div class="col-md-3 col-sm-12">
     <mat-form-field class="example-form-field task__input">
@@ -70,7 +90,7 @@
 
   <div class="table-responsive">
     <table class="table v-middle">
-      <!--  <thead>
+      &lt;!&ndash;  <thead>
         <tr class="bg-light">
           <th class="border-top-0">Rotation period</th>
           <th class="border-top-0">Orbital period</th>
@@ -84,7 +104,7 @@
           <th class="border-top-0">Edited</th>
           <th class="border-top-0">Url</th>
         </tr>
-        </thead>-->
+        </thead>&ndash;&gt;
       <tbody>
       <tr *ngFor="let resident of planetResidents">
         <td>{{resident.name}}</td>
@@ -95,11 +115,11 @@
         <td>{{resident.eye_color}}</td>
         <td>{{resident.birth_year}}</td>
         <td>{{resident.gender}}</td>
-        <!--        <td>{{resident.homeworld}}</td>-->
-        <!--        <td>{{resident.films}}</td>-->
-        <!--        <td>{{resident.species}}</td>-->
-        <!--        <td>{{resident.vehicles}}</td>-->
-        <!--        <td>{{resident.starships}}</td>-->
+        &lt;!&ndash;        <td>{{resident.homeworld}}</td>&ndash;&gt;
+        &lt;!&ndash;        <td>{{resident.films}}</td>&ndash;&gt;
+        &lt;!&ndash;        <td>{{resident.species}}</td>&ndash;&gt;
+        &lt;!&ndash;        <td>{{resident.vehicles}}</td>&ndash;&gt;
+        &lt;!&ndash;        <td>{{resident.starships}}</td>&ndash;&gt;
         <td>{{resident.created | date: 'medium'}}</td>
         <td>{{resident.edited | date: 'medium'}}</td>
         <td>{{resident.url | date: 'medium'}}</td>
@@ -107,4 +127,4 @@
       </tbody>
     </table>
   </div>
-</div>
+</div>-->

@@ -15,10 +15,12 @@ export class ResidentComponent implements OnChanges {
 
   public planetResidents: Resident[] = []
   public planetResidentsAll: Resident[] = []
-  public image: any
 
   @Input()
   residentUrl: string[] = []
+
+  @Input()
+  planetName: string | undefined
 
   private male: any;
   private female: any
@@ -36,11 +38,7 @@ export class ResidentComponent implements OnChanges {
         this.planetResidentsAll.push(resident)
       })
     }
-    const random = Math.floor(Math.random() * (1 - 10)) + 10;
-    this.image = `https://picsum.photos/id/${random}/300/300`;
   }
-
-
 
   onFilterByGender(value: string) {
     this.planetResidents = this.planetResidentsAll.filter(planet => planet.gender === value || value === null)
