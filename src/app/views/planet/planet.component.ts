@@ -3,6 +3,8 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Resident} from "../../model/Resident";
 import {ResidentService} from "../../services/resident.service";
 import {PlanetService} from "../../services/planet.service";
+import {MatTableDataSource} from "@angular/material/table";
+import {Planet} from "../../model/Planet";
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +17,15 @@ import {PlanetService} from "../../services/planet.service";
 })
 export class PlanetComponent implements OnInit {
 
+  public displayedColumns: string[] = ['name', 'rotation_period', 'orbital_period', 'diameter', 'climate', 'gravity', 'terrain', 'surface_water', 'population', 'created', 'edited', 'action'];
+  public dataSource: MatTableDataSource<Planet> = new MatTableDataSource<Planet>()
+
   private planetParam: any
   public planetInfo: any
-  public planetResidents: Resident[] = []
+  // public planetResidents: Resident[] = []
   private planetId?: any
   public residentUrl: string[] = []
+  public images: any
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +46,14 @@ export class PlanetComponent implements OnInit {
         .map(([key, value]) => [key.replace('_', ' '), value])
 
       this.residentUrl = planet.residents
+
+      this.dataSource = new MatTableDataSource<Planet>(this.planetInfo)
+
+
+
     })
+    const random = Math.floor(Math.random() * (1 - 10)) + 10;
+    this.images = `https://picsum.photos/id/${random}/400/400`;
+
   }
 }

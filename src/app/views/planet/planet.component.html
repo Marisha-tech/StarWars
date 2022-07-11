@@ -1,12 +1,28 @@
-<h1>Planet Information</h1>
+<h1 class="planet__title title">Planet Information</h1>
 
-<table class="table v-middle">
-  <tbody>
-  <tr *ngFor="let planet of planetInfo">
-    <td>{{planet[0] | lowercase}}</td>
-    <td>{{planet[1]}}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="planet__card">
+  <div class="planet__img">
+    <img src="{{images}}" alt="">
+  </div>
+  <div class="planet__info">
+    <table class="table v-middle">
+      <tbody>
+      <tr *ngFor="let planet of planetInfo">
+        <td>{{planet[0] | titlecase}}</td>
+        <td>{{planet[1]}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!--<table class="table v-middle">-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let planet of planetInfo">-->
+<!--    <td>{{planet[0] | titlecase}}</td>-->
+<!--    <td>{{planet[1]}}</td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
 
 <app-resident [residentUrl]="residentUrl"></app-resident>

@@ -1,0 +1,19 @@
+.planet {
+  &__title {
+    margin: 2rem 0;
+  }
+
+  &__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__img {
+    width: 40%;
+  }
+
+  &__info {
+    width: 60%;
+  }
+}

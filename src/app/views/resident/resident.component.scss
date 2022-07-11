@@ -1,0 +1,23 @@
+.resident {
+  display: flex;
+  align-items: center;
+
+  &__card {
+    width: 25%;
+    border: 1px solid var(--silver);
+    padding: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  &__img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  &__info{
+    display: flex;
+    flex-direction: column;
+  }
+}

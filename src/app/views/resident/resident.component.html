@@ -1,3 +1,57 @@
+<div class="resident">
+  <div class="resident__card" *ngFor="let resident of planetResidents">
+    <div class="resident__img">
+      <img src="{{image}}" alt="">
+    </div>
+    <div class="resident__info">
+      <span class="resident__title">{{resident.name}}</span>
+      <span class="resident__info--height">
+        Height: {{resident.height}}
+        <!--        <td>{{resident.homeworld}}</td>-->
+        <!--        <td>{{resident.films}}</td>-->
+        <!--        <td>{{resident.species}}</td>-->
+        <!--        <td>{{resident.vehicles}}</td>-->
+        <!--        <td>{{resident.starships}}</td>-->
+      </span>
+      <span class="resident__info--mass">Mass:
+        {{resident.mass}}
+      </span>
+      <span class="resident__info--hair-color">
+        Hair color:
+        {{resident.hair_color}}
+      </span>
+      <span class="resident__info--skin-color">
+        Skin color:
+        {{resident.skin_color}}
+      </span>
+      <span class="resident__info--eye-color">
+        Eye color:
+        {{resident.eye_color}}
+      </span>
+      <span class="resident__info--birth">
+        Birth year:
+        {{resident.birth_year}}
+      </span>
+      <span class="resident__info--gender">
+        Gender:
+        {{resident.gender}}
+      </span>
+      <span class="resident__info--created">
+        Created:
+        {{resident.created | date: 'longDate'}}
+      </span>
+      <span class="resident__info--edited">
+        Edited:
+        {{resident.edited | date: 'longDate'}}
+      </span>
+      <span class="resident__info--url">
+        Url:
+        {{resident.url }}
+      </span>
+    </div>
+  </div>
+</div>
+
 <div *ngIf="planetResidents.length>0">
   <h2>Resident information</h2>
   <div class="col-md-3 col-sm-12">
@@ -10,16 +64,6 @@
         <mat-option value="male">Male</mat-option>
         <mat-option value="female">Female</mat-option>
       </mat-select>
-
-      <!--    <button-->
-      <!--      (click)="$event.stopPropagation(); onFilterByPriority(null)"-->
-      <!--      *ngIf="selectedPriorityFilter != null"-->
-      <!--      class="btn-gray"-->
-      <!--      matSuffix-->
-      <!--      mat-icon-button-->
-      <!--      aria-label="Clear">-->
-      <!--      <mat-icon>clear</mat-icon>-->
-      <!--    </button>-->
     </mat-form-field>
   </div>
 
