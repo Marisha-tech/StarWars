@@ -1,30 +1,40 @@
-//@import "assets/scss/style";
-//@import "assets/icons/font-awesome/css/fontawesome-all.css";
-//@import 'assets/icons/themify-icons/themify-icons.css';
-//@import "assets/icons/material-design-iconic-font/css/materialdesignicons.min.css";
-//@import "assets/icons/weather-icons/css/weather-icons.min.css";
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
+
+@font-face {
+  font-family: Starjedi;
+  src: url(assets/fonts/starJedi/Starjedi.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: Starjhol;
+  src: url(assets/fonts/starJedi/Starjhol.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: Starjout;
+  src: url(assets/fonts/starJedi/Starjout.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: AnakinmonoRegular;
+  src: url(assets/fonts/starJedi/AnakinmonoRegular.ttf) format("opentype");
+}
+
 
 :root {
   --god-gray: #1d1d1d;
-  --java: #10c9c3;
   --mine-shaft: #3e3e3e;
   --wild-sand: #f5f5f5;
   --mercury: #e9e9e9;
   --silver: #cacaca;
   --brink-pink: #ff5990;
   --black-haze: #f8f9f9;
-  --boulder: #787878;
-  --oxley: #709E81;
-  --acapulco: #83b5a0;
 
   --primary-color: #dc3545;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
-  --white: #ffffff;
 }
 
 * {
@@ -34,12 +44,24 @@
 }
 
 body {
-  font-family: 'Nunito Sans', sans-serif;
-  //  font-family: Roboto, "Helvetica Neue", sans-serif;
+  //font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   background-color: #fff;
   color: var(--boulder);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 1500px;
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .navbar {
@@ -67,9 +89,11 @@ img {
   //max-width: 400px;
 }
 
+
 .wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  //flex-direction: column;
   height: 100%;
   min-height: calc(100vh - 80px);
   padding-bottom: 5rem;
@@ -80,6 +104,7 @@ img {
 }
 
 .not-found {
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,13 +113,20 @@ img {
 
 /*==============================Material==============================*/
 
-.mat-typography {
-  line-height: 1.5
+//.mat-typography {
+//  font: 400 16px/20px AnakinmonoRegular, "Helvetica Neue", sans-serif;
+//  letter-spacing: normal;
+//}
+
+.mat-header-row.cdk-header-row {
+  font-family: AnakinmonoRegular, "Helvetica Neue", sans-serif;;
 }
 
-.mat-flat-button {
+
+button.mat-flat-button {
   border-radius: 0;
+  padding: 0.5rem 3rem;
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';

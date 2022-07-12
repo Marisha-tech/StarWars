@@ -1,5 +1,6 @@
 .planet {
   &__title {
+    font-family: "Starjout", "arial", sans-serif;
     margin: 2rem 0;
   }
 }
@@ -7,14 +8,60 @@
 th {
   background: var(--light-color);
   padding: 0.5rem 1rem;
+  font-size: 16px;
 
-}
-
-tr {
-  height: 48px;
-  border-bottom: 1px solid var(--silver);
 }
 
 td {
   padding: 0.5rem 1rem;
+}
+
+.col {
+  &-name {
+    width: 15%;
+  }
+
+  &-rotation_period {
+    width: 5%;
+  }
+
+  &-orbital_period {
+    width: 5%;
+  }
+
+  &-diameter {
+    width: 5%;
+  }
+
+  &-climate {
+    width: 5%;
+  }
+
+  &-gravity {
+    width: 5%;
+  }
+
+  &-terrain {
+    width: 5%;
+  }
+
+  &-surface_water {
+    width: 15%;
+  }
+
+  &-population {
+    width: 15%;
+  }
+
+  &-created {
+    width: 15%;
+  }
+
+  &-edited {
+    width: 5%;
+  }
+
+  &-action {
+    width: 5%;
+  }
 }

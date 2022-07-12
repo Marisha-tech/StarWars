@@ -5,15 +5,25 @@
 
   &__card {
     width: 23%;
-    border: 1px solid var(--mercury);
+    border: 1px solid var(--wild-sand);
     padding: 1rem;
     margin: 0 1rem 1rem 0;
     transition: box-shadow .5s linear;
 
 
-    &:hover{
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    &:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       transition: box-shadow .5s linear;
+    }
+
+    @media (max-width: 1024px) {
+      width: 48%;
+
+    }
+    @media (max-width: 768px) {
+      display: flex;
+      width: 100%;
+
     }
 
   }
@@ -24,6 +34,10 @@
     justify-content: center;
     margin-bottom: 1rem;
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      width: 30%;
+    }
   }
 
   &__info {
@@ -33,12 +47,17 @@
     &-title {
       font-size: 18px;
       padding-bottom: 1rem;
+      font-family: Starjedi, "Helvetica Neue", sans-serif;;
     }
   }
 
   &__prop {
     font-size: 16px;
+    font-weight: 500; //Starjedi AnakinmonoRegular
+    //font-family: AnakinmonoRegular, "Helvetica Neue", sans-serif;;
+
   }
 
 
 }
+

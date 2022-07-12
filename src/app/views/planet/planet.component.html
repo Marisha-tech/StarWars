@@ -5,27 +5,16 @@
     <img src="assets/img/planet.png" alt="">
   </div>
   <div class="planet__info">
-    <table class="table v-middle">
+    <table class="table resp-tab v-middle">
       <tbody>
       <tr *ngFor="let planet of planetInfo">
-        <td>{{planet[0] | titlecase}}</td>
+        <td class="planet__prop-name">{{planet[0] | titlecase}}</td>
         <td>{{planet[1]}}</td>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-
-
-<!--<table class="table v-middle">-->
-<!--  <tbody>-->
-<!--  <tr *ngFor="let planet of planetInfo">-->
-<!--    <td>{{planet[0] | titlecase}}</td>-->
-<!--    <td>{{planet[1]}}</td>-->
-<!--  </tr>-->
-<!--  </tbody>-->
-<!--</table>-->
 
 <app-resident [residentUrl]="residentUrl" [planetName]="planetName"></app-resident>
 <button mat-flat-button color="primary" [routerLink]="['/']">Back</button>

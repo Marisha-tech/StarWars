@@ -1,5 +1,6 @@
 .planet {
   &__title {
+    font-family: 'Starjout', 'arial', sans-serif;
     margin: 2rem 0;
   }
 
@@ -7,13 +8,130 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      flex-direction: column;
+    }
+
   }
 
   &__img {
     width: 40%;
+    @media (max-width: 768px) {
+      width: 50%;
+    }
   }
 
   &__info {
     width: 60%;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  &__prop-name {
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.table {
+  width: 100%;
+  border: none;
+  margin-bottom: 20px;
+  font-family: AnakinmonoRegular, "Helvetica Neue", sans-serif;;
+}
+
+.table thead th {
+  font-weight: bold;
+  text-align: left;
+  border: none;
+  padding: 10px 15px;
+  background: #d8d8d8;
+}
+
+.table tbody td {
+  text-align: left;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.table tbody tr:nth-child(even) {
+  background: var(--wild-sand);
+}
+
+
+.resp-tab {
+  border-radius: 5px;
+  font-weight: normal;
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+}
+
+.resp-tab th, .resp-tab td {
+  padding: 10px 20px;
+  font-size: 13px;
+  border: none;
+  font-family: Verdana, sans-serif;
+  border: 1px solid #337AB7;
+  vertical-align: top;
+}
+
+.resp-tab th {
+  color: #FFF;
+  background: #337AB7;
+  font-weight: bold;
+  border: 1px solid #1a4a73;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.resp-tab tr:nth-child(even) {
+  background: #edf7ff;
+}
+
+.resp-tab td span {
+  background: #337AB7;
+  color: #FFF;
+  display: none;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: Verdana, sans-serif;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media(max-width: 768px) {
+  .resp-tab thead {
+    display: none;
+  }
+  .resp-tab tr {
+    display: flex;
+    flex-direction: row;
+    //flex-wrap: wrap;
+    //margin-bottom: 30px;
+  }
+  .resp-tab td {
+    margin: 0 -1px -1px 0;
+    padding-top: 35px;
+    position: relative;
+    width: 50%;
+  }
+  .resp-tab td span {
+    display: block;
+  }
+}
+
+@media(max-width: 480px) {
+  .resp-tab td {
+    width: 100%;
   }
 }
