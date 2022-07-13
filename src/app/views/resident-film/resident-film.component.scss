@@ -1,0 +1,6 @@
+
+.film {
+  &--marker::before{
+    content: '\2713';
+  }
+}

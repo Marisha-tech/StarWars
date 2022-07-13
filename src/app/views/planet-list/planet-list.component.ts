@@ -19,7 +19,6 @@ export class PlanetListComponent implements OnInit, OnDestroy {
   public dataSource: MatTableDataSource<Planet> = new MatTableDataSource<Planet>()
 
   public planets: Planet[] = []
-  public columnNames?: any
 
   private pSub: Subscription | any
 
@@ -32,12 +31,6 @@ export class PlanetListComponent implements OnInit, OnDestroy {
       this.planets = planets
 
       this.dataSource = new MatTableDataSource<Planet>(this.planets)
-
-      // this.columnNames = Object.keys(planets[0])
-      //   .filter((el: string) => {
-      //     return el !== 'residents' && el !== 'films' && el !== 'url'
-      //   })
-      //   .map(el => el.split('_').join(' '))
 
     })
   }

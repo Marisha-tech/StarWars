@@ -1,9 +1,6 @@
-import {Observable} from "rxjs"
-
-
 export interface CommonDAO<T> {
 
-  getAllPlanets(): Observable<T[]>
+  // getAllPlanets(): Observable<T[]>
 
   // get(id: number): Observable<T>
   //

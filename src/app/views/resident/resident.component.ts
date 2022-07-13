@@ -15,6 +15,7 @@ export class ResidentComponent implements OnChanges {
 
   public planetResidents: Resident[] = []
   public planetResidentsAll: Resident[] = []
+  public residentFilm?: string[]
 
   @Input()
   residentUrl: string[] = []
@@ -36,8 +37,13 @@ export class ResidentComponent implements OnChanges {
       this.residentService.getByResident(residentUrl).subscribe(resident => {
         this.planetResidents.push(resident)
         this.planetResidentsAll.push(resident)
+
+        this.residentFilm = resident.films
+
       })
+
     }
+
   }
 
   onFilterByGender(value: string) {

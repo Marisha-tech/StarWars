@@ -1,12 +1,12 @@
 .footer {
-
+  margin-top: 20px;
 }
 
 /*==============================Copyright==============================*/
 .copyright {
   background-color: var(--mine-shaft);
-  padding: 10px 0;
-  color: var(--white);
+  padding: 10px;
+  color: #fff;
 
   &__block {
     display: flex;
@@ -17,4 +17,3 @@
     }
   }
 }
-

@@ -25,13 +25,9 @@
         <div class="resident__info-height">
           <span class="resident__prop">Height:</span>
           {{resident.height}}
-          <!--        <td>{{resident.homeworld}}</td>-->
-          <!--        <td>{{resident.films}}</td>-->
-          <!--        <td>{{resident.species}}</td>-->
-          <!--        <td>{{resident.vehicles}}</td>-->
-          <!--        <td>{{resident.starships}}</td>-->
+
         </div>
-        <div class="resident__info-mass">
+        <div class="resident__info-mass" *ngIf="resident.mass !== 'unknown'">
           <span class="resident__prop">Mass:</span>
           {{resident.mass}}
         </div>
@@ -55,6 +51,11 @@
           <span class="resident__prop">Gender:</span>
           {{resident.gender}}
         </div>
+        <div class="resident__info-gender">
+          <span class="resident__prop">Films:</span>
+          <app-resident-film [residentFilm]="resident.films"></app-resident-film>
+
+        </div>
         <div class="resident__info-created">
           <span class="resident__prop">Created:</span>
           {{resident.created | date: 'longDate'}}
@@ -67,7 +68,13 @@
           <span class="resident__prop">Url:</span>
           {{resident.url }}
         </div>
+
       </div>
+
     </div>
+
   </div>
+  <div>
+  </div>
+
 </div>

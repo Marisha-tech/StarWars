@@ -1,56 +1,54 @@
 <h1 class="planet__title title">Star Wars planets</h1>
 <div *ngIf="planets.length; else loading">
   <div class="table-responsive">
-
-    <table cdk-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-      <ng-container cdkColumnDef="name">
-        <th cell-header-cell *cdkHeaderCellDef> Name</th>
-        <td class="col-name" cdk-cell *cdkCellDef="let planet"> {{planet.name}} </td>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+        <td class="col-name" mat-cell *matCellDef="let planet"> {{planet.name}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="rotation_period">
-        <th cell-header-cell *cdkHeaderCellDef> Rotation period</th>
-        <td class="col-rotation_period" cdk-cell *cdkCellDef="let planet"> {{planet.rotation_period}} </td>
+      <ng-container matColumnDef="rotation_period">
+        <th mat-header-cell *matHeaderCellDef> Rotation period</th>
+        <td class="col-rotation_period" mat-cell *matCellDef="let planet"> {{planet.rotation_period}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="orbital_period">
-        <th cell-header-cell *cdkHeaderCellDef> Orbital period</th>
-        <td class="col-orbital_period" cdk-cell *cdkCellDef="let planet"> {{planet.orbital_period}} </td>
+      <ng-container matColumnDef="orbital_period">
+        <th mat-header-cell *matHeaderCellDef> Orbital period</th>
+        <td class="col-orbital_period" mat-cell *matCellDef="let planet"> {{planet.orbital_period}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="diameter">
-        <th cell-header-cell *cdkHeaderCellDef> Diameter</th>
-        <td class="col-diameter" cdk-cell *cdkCellDef="let planet"> {{planet.diameter}} </td>
+      <ng-container matColumnDef="diameter">
+        <th mat-header-cell *matHeaderCellDef> Diameter</th>
+        <td class="col-diameter" mat-cell *matCellDef="let planet"> {{planet.diameter}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="climate">
-        <th cell-header-cell *cdkHeaderCellDef> Climate</th>
-        <td class="col-climate" cdk-cell *cdkCellDef="let planet"> {{planet.climate}} </td>
+      <ng-container matColumnDef="climate">
+        <th mat-header-cell *matHeaderCellDef> Climate</th>
+        <td class="col-climate" mat-cell *matCellDef="let planet"> {{planet.climate}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="gravity">
-        <th cell-header-cell *cdkHeaderCellDef> Gravity</th>
-        <td class="col-gravity" cdk-cell *cdkCellDef="let planet"> {{planet.gravity}} </td>
+      <ng-container matColumnDef="gravity">
+        <th mat-header-cell *matHeaderCellDef> Gravity</th>
+        <td class="col-gravity" mat-cell *matCellDef="let planet"> {{planet.gravity}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="terrain">
-        <th cell-header-cell *cdkHeaderCellDef> Terrain</th>
-        <td class="col-terrain" cdk-cell *cdkCellDef="let planet"> {{planet.terrain}} </td>
+      <ng-container matColumnDef="terrain">
+        <th mat-header-cell *matHeaderCellDef> Terrain</th>
+        <td class="col-terrain" mat-cell *matCellDef="let planet"> {{planet.terrain}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="surface_water">
-        <th cell-header-cell *cdkHeaderCellDef> Surface water</th>
-        <td class="col-surface_water" cdk-cell *cdkCellDef="let planet"> {{planet.surface_water}} </td>
+      <ng-container matColumnDef="surface_water">
+        <th mat-header-cell *matHeaderCellDef> Surface water</th>
+        <td class="col-surface_water" mat-cell *matCellDef="let planet"> {{planet.surface_water}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="population">
-        <th cell-header-cell *cdkHeaderCellDef> Population</th>
-        <td class="col-" cdk-cell *cdkCellDef="let planet"> {{planet.population}} </td>
+      <ng-container matColumnDef="population">
+        <th mat-header-cell *matHeaderCellDef> Population</th>
+        <td class="col-" mat-cell *matCellDef="let planet"> {{planet.population}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="created">
-        <th cell-header-cell *cdkHeaderCellDef> Created</th>
-        <td class="col-created" cdk-cell *cdkCellDef="let planet"> {{planet.created | date: 'mediumDate'}} </td>
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef> Created</th>
+        <td class="col-created" mat-cell *matCellDef="let planet"> {{planet.created | date: 'mediumDate'}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="edited">
-        <th cell-header-cell *cdkHeaderCellDef> Edited</th>
-        <td class="col-edited" cdk-cell *cdkCellDef="let planet"> {{planet.edited | date: 'mediumDate'}} </td>
+      <ng-container matColumnDef="edited">
+        <th mat-header-cell *matHeaderCellDef> Edited</th>
+        <td class="col-edited" mat-cell *matCellDef="let planet"> {{planet.edited | date: 'mediumDate'}} </td>
       </ng-container>
-      <ng-container cdkColumnDef="action">
-        <th cell-header-cell *cdkHeaderCellDef> Action</th>
-        <td class="col-action" cdk-cell *cdkCellDef="let planet">
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <td class="col-action" mat-cell *matCellDef="let planet">
           <button mat-flat-button
                   color="primary"
                   [routerLink]="['/planets', planet.url | idPlanet]"
@@ -58,14 +56,13 @@
           </button>
         </td>
       </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
 </div>
 
-<ng-template  #loading>
+<ng-template #loading>
   <div class="not-found">
     Loading...
   </div>

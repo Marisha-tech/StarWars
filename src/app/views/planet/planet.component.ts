@@ -1,10 +1,10 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
-import {Resident} from "../../model/Resident";
 import {ResidentService} from "../../services/resident.service";
 import {PlanetService} from "../../services/planet.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {Planet} from "../../model/Planet";
+import {Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +17,11 @@ import {Planet} from "../../model/Planet";
 })
 export class PlanetComponent implements OnInit {
 
-  public displayedColumns: string[] = ['name', 'rotation_period', 'orbital_period', 'diameter', 'climate', 'gravity', 'terrain', 'surface_water', 'population', 'created', 'edited', 'action'];
   public dataSource: MatTableDataSource<Planet> = new MatTableDataSource<Planet>()
 
-  private planetParam: any
+  private planetParam?: Subscription
   public planetInfo: any
-  // public planetResidents: Resident[] = []
-  private planetId?: any
+  private planetId?: string
   public residentUrl: string[] = []
   public planetName?: string
 
@@ -40,7 +38,7 @@ export class PlanetComponent implements OnInit {
       this.planetId = params['name']
     })
 
-    this.planetService.getByIdPlanet(this.planetId).subscribe(planet => {
+    this.planetService.getByIdPlanet(this.planetId!).subscribe(planet => {
       this.planetInfo = Object.entries(planet)
         .filter(([key]) => key !== 'residents' && key !== 'films')
         .map(([key, value]) => [key.replace('_', ' '), value])

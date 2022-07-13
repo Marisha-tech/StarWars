@@ -5,7 +5,5 @@ export interface PlanetDAO {
 
   getAllPlanets(): Observable<Planet[]>
 
-  // getByNamePlanet(name: string): Observable<Planet>
-
   getByIDPlanet(id: string): Observable<Planet>
 }

@@ -1,11 +1,11 @@
-<h1 class="planet__title title">Planet Information {{planetName}}</h1>
+<h1 class="planet__title title">Planet {{planetName}}</h1>
 
 <div class="planet__card">
   <div class="planet__img">
-    <img src="assets/img/planet.png" alt="">
+    <img src="assets/img/planet.png" alt="planet">
   </div>
-  <div class="planet__info">
-    <table class="table resp-tab v-middle">
+  <div class="planet__info" >
+    <table class="table table__planet" *ngIf="planetInfo; else loading">
       <tbody>
       <tr *ngFor="let planet of planetInfo">
         <td class="planet__prop-name">{{planet[0] | titlecase}}</td>
@@ -14,6 +14,11 @@
       </tbody>
     </table>
   </div>
+  <ng-template #loading>
+    <div #loading class="not-found">
+      Loading...
+    </div>
+  </ng-template>
 </div>
 
 <app-resident [residentUrl]="residentUrl" [planetName]="planetName"></app-resident>
